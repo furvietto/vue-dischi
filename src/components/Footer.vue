@@ -1,6 +1,6 @@
 .<template>
   <div>
-      stai?
+   
   </div>
 </template>
 

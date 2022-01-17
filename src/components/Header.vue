@@ -1,11 +1,14 @@
 .<template>
-  <div class="container-fluid">
+<header>
+    <div class="container-fluid">
       <div class="row p-2">
           <div class="col-12">
               <img src="../assets/img/logo-small.svg" alt="">
           </div>
       </div>
   </div>
+</header>
+  
 </template>
 
 <script>
@@ -19,7 +22,6 @@ export default {
     background-color: #2e3a46;
     img {
         width: 30px;
-        filter: invert(10);
     }
 }
     
