@@ -1,7 +1,7 @@
 .<template>
   <div class="container-fluid">
-      <div class="row p-3 bg-light">
-          <div class="col-12 d-flex justify-content-end">
+      <div class="row p-2">
+          <div class="col-12">
               <img src="../assets/img/logo-small.svg" alt="">
           </div>
       </div>
@@ -15,8 +15,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container-fluid {
+    background-color: #2e3a46;
     img {
         width: 30px;
         filter: invert(10);
     }
+}
+    
 </style>
