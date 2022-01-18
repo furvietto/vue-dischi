@@ -24,7 +24,9 @@
   </main>
 </template>
 
+
 <script>
+// import
 import axios from 'axios';
 import Album from './Album.vue';
 import Select from './Select.vue'
