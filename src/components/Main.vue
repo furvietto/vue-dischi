@@ -12,8 +12,9 @@
           <div class="row justify-content-center">
               <div class="col-8" >
                   <div v-if="cards" class="row gap-3 justify-content-around row-cols-6">
+                        <!-- v-for="(card,index) in cards" -->
                         <Album 
-                        v-for="(card,index) in getFilter"
+                        v-for="(card,index) in getFilter" 
                         :key="index"
                         :card="card"
                         />
@@ -43,8 +44,9 @@ export default {
     data() {
         return {
             textSearch: "all",
-            getGenre: null,
             cards:null,
+            // vModel: ""
+            // getGenre: null,
             queryApi: "https://flynn.boolean.careers/exercises/api/array/music"
         }
     },
@@ -61,15 +63,6 @@ export default {
                  element.genre.toLowerCase() == this.textSearch.toLowerCase()
                 )
             }       
-               
-            
-
-    //          if (this.textSearch === '') {
-    //     return this.characters;
-    //   }
-
-    //   // eslint-disable-next-line max-len
-    //   return this.characters.filter((element) => element.name.toLowerCase().includes(this.textSearch.toLowerCase()));
         }
     },
     
@@ -78,7 +71,7 @@ export default {
             axios.get(this.queryApi)
             .then(res => {
                 this.cards = res.data.response;
-                this.getGenre = res.data.response;
+                // this.getGenre =  res.data.response;
             })
             .catch(err => {
                 console.error(err); 
@@ -88,8 +81,16 @@ export default {
 
         searchGenre: function (text) {
             this.textSearch = text
-            console.log(text);
         }
+
+        // searchGenre: function (text) {
+        //     this.cards = this.getGenre;
+        //     if (this.vModel != "all") {
+        //         this.cards = this.cards.filter((element) => {
+        //             element.genre.toLowerCase().includes(this.vModel.toLowerCase())
+        //         })
+        //     }
+        // },
         
     },
 }
