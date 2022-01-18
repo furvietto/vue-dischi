@@ -58,6 +58,7 @@ export default {
             })
         },
 
+
         searchGenre: function (text) {
         this.cards = this.getGenre
         if (text != "all") {
