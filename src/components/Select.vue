@@ -1,6 +1,6 @@
 .<template>
   <select v-model="selectedGenre" @change="$emit('doSearch', selectedGenre)" name="search" id="search">
-    <option value="all">All</option>
+    <option value="all">Genre</option>
     <option value="rock">Rock</option>
     <option value="jazz">Jazz</option>
     <option value="metal">Metal</option>

@@ -6,13 +6,14 @@
                   <Select 
                   @doSearch="searchGenre($event)"
                   />
+
               </div>
           </div>
           <div class="row justify-content-center">
               <div class="col-8" >
                   <div v-if="cards" class="row gap-3 justify-content-around row-cols-6">
                         <Album 
-                        v-for="(card,index) in cards"
+                        v-for="(card,index) in getFilter"
                         :key="index"
                         :card="card"
                         />
@@ -41,18 +42,37 @@ export default {
     name:"Main",
     data() {
         return {
+            textSearch: "all",
             getGenre: null,
             cards:null,
             queryApi: "https://flynn.boolean.careers/exercises/api/array/music"
         }
     },
     created() {
-        setTimeout(() => {
-             this.getAxios() 
-        }, 3000);
-                  
+        this.getAxios()       
     },
 
+    computed:{
+        getFilter() {
+            if (this.textSearch === "all") {
+                return this.cards
+            }else {
+                 return this.cards.filter((element) => 
+                 element.genre.toLowerCase() == this.textSearch.toLowerCase()
+                )
+            }       
+               
+            
+
+    //          if (this.textSearch === '') {
+    //     return this.characters;
+    //   }
+
+    //   // eslint-disable-next-line max-len
+    //   return this.characters.filter((element) => element.name.toLowerCase().includes(this.textSearch.toLowerCase()));
+        }
+    },
+    
     methods: {
         getAxios: function () {
             axios.get(this.queryApi)
@@ -67,15 +87,8 @@ export default {
 
 
         searchGenre: function (text) {
-        this.cards = this.getGenre
-            if (text != "all") {
-                let getArray = this.cards.filter(element => {
-                if (element.genre.toLowerCase().includes(text.toLowerCase())) {
-                    return true
-                }
-            })
-            this.cards = getArray
-            }
+            this.textSearch = text
+            console.log(text);
         }
         
     },
