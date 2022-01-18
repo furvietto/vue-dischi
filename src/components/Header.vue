@@ -20,6 +20,7 @@ export default {
 <style lang="scss" scoped>
 .container-fluid {
     background-color: #2e3a46;
+    height: 6vh;
     img {
         width: 30px;
     }
