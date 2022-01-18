@@ -17,7 +17,9 @@
                         :card="card"
                         />
                   </div>
-                <div class="text-white" v-else>LOADING...</div>
+                <div class="text-white" v-else>
+                    <h1>Loading</h1>
+                    </div>
               </div>
           </div>
       </div>
@@ -29,7 +31,7 @@
 // import
 import axios from 'axios';
 import Album from './Album.vue';
-import Select from './Select.vue'
+import Select from './Select.vue';
 
 export default {
     components: {
@@ -45,7 +47,10 @@ export default {
         }
     },
     created() {
-            this.getAxios()        
+        setTimeout(() => {
+             this.getAxios() 
+        }, 3000);
+                  
     },
 
     methods: {
@@ -63,14 +68,14 @@ export default {
 
         searchGenre: function (text) {
         this.cards = this.getGenre
-        if (text != "all") {
-            let getArray = this.cards.filter(element => {
-             if (element.genre.toLowerCase().includes(text.toLowerCase())) {
-                 return true
-             }
-         })
-         this.cards = getArray
-        }
+            if (text != "all") {
+                let getArray = this.cards.filter(element => {
+                if (element.genre.toLowerCase().includes(text.toLowerCase())) {
+                    return true
+                }
+            })
+            this.cards = getArray
+            }
         }
         
     },
@@ -81,7 +86,5 @@ export default {
     .bc-main {
         background-color: #1e2d3b;
         height: 94vh;      
-    }
-     
-     
+    }     
 </style>
